@@ -134,6 +134,7 @@ Cертификат - это не только открытый ключ, это
 Создаём файл - **ext.conf**, в котором указываем следующие свойства:
 
 **[ req ]**
+-----------
 
 **default_bits			= 3072**						- длина шифрования по умолчанию (в бит.)
 
@@ -148,7 +149,8 @@ Cертификат - это не только открытый ключ, это
 **string_mask			= utf8only**					- использование кодировки
 
 
-[ req_distinguished_name ]
+**[ req_distinguished_name ]**
+---------------------------
 
 **countryName			= Country Name (2 letter code)**			- название страны (запрос)
 
@@ -193,7 +195,8 @@ Cертификат - это не только открытый ключ, это
 **emailAddress_max		= 40**						- максисальная длина имени электронной почты
 
 
-[ req_attributes ]
+**[ req_attributes ]**
+------------------------
 
 **challengePassword		= A challenge Password**				- ввод пароля (запрос)
 
@@ -205,7 +208,8 @@ Cертификат - это не только открытый ключ, это
 **unstructuredName		= An optionaly company name**			- использование имени компании опционально (запрос)
 
 
-[ v3_ca ]
+**[ v3_ca ]**
+-------------
 
 **authorityKeyIdentifier		= keyid,issuer**					- указываем использование данных о расширении ключа для его идентификации
 
@@ -221,7 +225,8 @@ Cертификат - это не только открытый ключ, это
 **subjectAltName			= @alt_names**					- указываем альтернативные DNS-имена для использования сертификатом.
 
 
-[ alt_names ]
+**[ alt_names ]**
+-----------------
 
 **DNS.1				= CA**						- само DNS-имя
 
@@ -240,7 +245,9 @@ Cертификат - это не только открытый ключ, это
 
 **subjectAltName			= @alt_names**
 
-[ alt_names ]
+**[ alt_names ]**
+------------------
+
 **DNS.1				= Intermediate**
 **DNS.2				= Intermediate.demo.lab**
 
@@ -257,7 +264,9 @@ Cертификат - это не только открытый ключ, это
 
 **subjectAltName			= @alt_names**
 
-[ alt_names ]
+**[ alt_names ]**
+-----------------
+
 **DNS.1**				= www
 **DNS.2**				= www.demo.lab
 **DNS.3**				= www.demo.ru
