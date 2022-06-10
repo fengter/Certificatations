@@ -133,157 +133,157 @@ Cертификат - это не только открытый ключ, это
 
 Создаём файл - **ext.conf**, в котором указываем следующие свойства:
 
-[ req ]
+**[ req ]**
 
-default_bits			= 3072						- длина шифрования по умолчанию (в бит.)
+**default_bits			= 3072**						- длина шифрования по умолчанию (в бит.)
 
-default_keyfile			= prot_one.key					- название приватного ключа по умолчанию
+**default_keyfile			= prot_one.key**					- название приватного ключа по умолчанию
 
-distinguished_name		= req_distinguished_name			- название интерактивного файла, отвечающего за запись общих данных о создателе сертификата
+**distinguished_name		= req_distinguished_name**			- название интерактивного файла, отвечающего за запись общих данных о создателе сертификата
 
-attributes			= req_attributes				- название интеркативного файла, отвечающего за правило записи паролей
+**attributes			= req_attributes**				- название интеркативного файла, отвечающего за правило записи паролей
 
-x509_extensions			= v3_ca						- название файла, отвечающего за использование расширений
+**x509_extensions			= v3_ca**					- название файла, отвечающего за использование расширений
 
-string_mask			= utf8only					- использование кодировки
+**string_mask			= utf8only**					- использование кодировки
 
 
 [ req_distinguished_name ]
 
-countryName			= Country Name (2 letter code)			- название страны (запрос)
+**countryName			= Country Name (2 letter code)**			- название страны (запрос)
 
-countryName_default		= RU						- название страны по умолчанию
+**countryName_default		= RU**						- название страны по умолчанию
 
-countryName_min			= 2						- минимальное кол-во символов
+**countryName_min			= 2**						- минимальное кол-во символов
 
-countryName_max			= 2						- максимальное кол-во символов
-
-
-stateOrProvinceName		= Some state or province			- название области (запрос)
-
-stateOrProvinceName_default	= Moscow					- название области по умолчанию
+**countryName_max			= 2**						- максимальное кол-во символов
 
 
-localityName			= Locality Name (eg, city)			- название города (запрос)
+**stateOrProvinceName		= Some state or province**			- название области (запрос)
 
-localityName_default		= Moscow					- название города по умолчанию
-
-
-organizationName		= Organization Name (eg, org)			- название организации (запрос)
-
-organizationName_default	= WorldSkills					- название организации по умолчанию
+**stateOrProvinceName_default	= Moscow**					- название области по умолчанию
 
 
-organizationalUnitName		= Organizational Unit Name (eg, section)	- название отдела организации (запрос)
+**localityName			= Locality Name (eg, city)**			- название города (запрос)
 
-organizationalUnitName_default	= IT						- название отдела организации по умолчанию
-
-
-commonName			= Common Name (eg, YOUR name)			- основное DNS-имя или IP-адрес - важно для серверного сертификата, любое имя
-
-commonName_default		= CA						- имя по умолчанию
-
-commonName_max			= 64						- максимальная длина имени
+**localityName_default		= Moscow**					- название города по умолчанию
 
 
-emailAddress			= Email Address					- имя электронной почты (запрос)
+**organizationName		= Organization Name (eg, org)**			- название организации (запрос)
 
-emailAddress_default		= ca-support@demo.lab				- имя электронной почты по умолчанию
+**organizationName_default	= WorldSkills**					- название организации по умолчанию
 
-emailAddress_max		= 40						- максисальная длина имени электронной почты
+
+**organizationalUnitName		= Organizational Unit Name (eg, section)**	- название отдела организации (запрос)
+
+**organizationalUnitName_default	= IT**						- название отдела организации по умолчанию
+
+
+**commonName			= Common Name (eg, YOUR name)**			- основное DNS-имя или IP-адрес - важно для серверного сертификата, любое имя
+
+**commonName_default		= CA**						- имя по умолчанию
+
+**commonName_max			= 64**						- максимальная длина имени
+
+
+**emailAddress			= Email Address**					- имя электронной почты (запрос)
+
+**emailAddress_default		= ca-support@demo.lab**				- имя электронной почты по умолчанию
+
+**emailAddress_max		= 40**						- максисальная длина имени электронной почты
 
 
 [ req_attributes ]
 
-challengePassword		= A challenge Password				- ввод пароля (запрос)
+**challengePassword		= A challenge Password**				- ввод пароля (запрос)
 
-challengePassword_min		= 4						- минимальная длина пароля
+**challengePassword_min		= 4**						- минимальная длина пароля
 
-challengePassword_max		= 20						- максимальная длина пароля
+**challengePassword_max		= 20**						- максимальная длина пароля
 
 
-unstructuredName		= An optionaly company name			- использование имени компании опционально (запрос)
+**unstructuredName		= An optionaly company name**			- использование имени компании опционально (запрос)
 
 
 [ v3_ca ]
 
-authorityKeyIdentifier		= keyid,issuer					- указываем использование данных о расширении ключа для его идентификации
+**authorityKeyIdentifier		= keyid,issuer**					- указываем использование данных о расширении ключа для его идентификации
 
 
-basicConstraints		= (critical) CA:TRUE or FALSE, pathlen:1	- указываем наличие использования центра сертификации и длины путя, длину путя можно не указывать, в случае, если расширение критическое, указываем в начале - critical
+**basicConstraints		= (critical) CA:TRUE or FALSE, pathlen:1**	- указываем наличие использования центра сертификации и длины путя, длину путя можно не указывать, в случае, если расширение критическое, указываем в начале - critical
 
 
-keyUsage			= digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyCertSign		- указываем основные права сертификата
+**keyUsage			= digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyCertSign**		- указываем основные права сертификата
 
 
-subjectKeyIdentifier		= hash						- указываем идентификатор ключа субъекта 
+**subjectKeyIdentifier		= hash**						- указываем идентификатор ключа субъекта 
 
-subjectAltName			= @alt_names					- указываем альтернативные DNS-имена для использования сертификатом.
+**subjectAltName			= @alt_names**					- указываем альтернативные DNS-имена для использования сертификатом.
 
 
 [ alt_names ]
 
-DNS.1				= CA						- само DNS-имя
+**DNS.1				= CA**						- само DNS-имя
 
 
 Сохраняем файл конфигурации
 
 Создаём файл - **client.ext**, который будет содержать расширения для промежуточного сертификата, в файле будут следующие свойства:
 
-authorityKeyIdentifier		= keyid,issuer
-basicConstraints		= CA:TRUE,pathlen:2
-keyUsage			= digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyCertSign
+**authorityKeyIdentifier		= keyid,issuer**
+**basicConstraints		= CA:TRUE,pathlen:2**
+**keyUsage			= digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyCertSign**
 
-subjectKeyIdentifier		= hash
+**subjectKeyIdentifier		= hash**
 
-subjectAltName			= @alt_names
+**subjectAltName			= @alt_names**
 
 [ alt_names ]
-DNS.1				= Intermediate
-DNS.2				= Intermediate.demo.lab
+**DNS.1				= Intermediate**
+**DNS.2				= Intermediate.demo.lab**
 
 Заполняем его, указывая только расширения
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Создаём файл - **server.ext**. который будет содержать расширения для серверного сертификата, в файле будут следующие свойства:
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
-authorityInfoAccess		= OCSP;URI:http://ocsp.my.host/
-authorityKeyIdentifier		= keyid,issuer
-basicConstraints		= critical, CA:FALSE
-keyUsage			= digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
-subjectKeyIdentifier		= hash
+**authorityInfoAccess		= OCSP;URI:http://ocsp.my.host/**
+**authorityKeyIdentifier		= keyid,issuer**
+**basicConstraints		= critical, CA:FALSE**
+**keyUsage			= digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment**
+**subjectKeyIdentifier		= hash**
 
-subjectAltName			= @alt_names
+**subjectAltName			= @alt_names**
 
 [ alt_names ]
-DNS.1				= www
-DNS.2				= www.demo.lab
-DNS.3				= www.demo.ru
-DNS.4				= www.demo.com
-DNS.5				= astra-iwtm-all.demo.lab
+**DNS.1**				= www
+**DNS.2**				= www.demo.lab
+**DNS.3**				= www.demo.ru
+**DNS.4**				= www.demo.com
+**DNS.5**				= astra-iwtm-all.demo.lab
 
 Аналогично предыдущему файлу, заполняем его по аналогии
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Свойства параметра - **keyUsage**:
 --------------------------------------------------------------------------------------------------------------------
-- digitalSignature - наличие цифровой подписи
+- **digitalSignature** - наличие цифровой подписи
 
-- nonRepudiation - наличие свойства неотказуемости, то есть, доказательство происхождения данных и их целостность
+- **nonRepudiation** - наличие свойства неотказуемости, то есть, доказательство происхождения данных и их целостность
 
-- keyEncipherment - обозначает, что ключ в сертификате используется для шифрования другого криптографического ключа
+- **keyEncipherment** - обозначает, что ключ в сертификате используется для шифрования другого криптографического ключа
 
-- dataEncipherment - обозначает, что ключ субъекта сертификата используется для прямого шифрования необработанных пользовательских данных.
+- **dataEncipherment** - обозначает, что ключ субъекта сертификата используется для прямого шифрования необработанных пользовательских данных.
 
-- keyCertSign - обозначает, что сертификат может использоваться для подписи других сертификатов
+- **keyCertSign** - обозначает, что сертификат может использоваться для подписи других сертификатов
 
-- cRLSign - используется для проверки подписей в списках отзывов сертификатов (CRL)
+- **cRLSign** - используется для проверки подписей в списках отзывов сертификатов (CRL)
 
-- decipherOnly - устанавливает, что открытый ключ используется только для расшифрования данных
+- **decipherOnly** - устанавливает, что открытый ключ используется только для расшифрования данных
 
-- encipherOnly - устанавливает, что открытый ключ используется только для зашифрования данных
+- **encipherOnly** - устанавливает, что открытый ключ используется только для зашифрования данных
 
-- keyAgreement - устанавливается для управления зашифрованными ключами.
+- **keyAgreement** - устанавливается для управления зашифрованными ключами.
 
 Все указанные свойства устанавливаются избирательно и при необходимости
 ----------------------------------------------------------------------------------------------------------------------
