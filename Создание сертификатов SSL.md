@@ -131,66 +131,105 @@ Cертификат - это не только открытый ключ, это
 
 **ПРИМЕЧАНИЕ** - Будут использоваться сертификаты X.509 v3, так как в них используются расширения для того, чтобы задать свойства сертификатам.
 
-1. Создаём файл - **ext.conf**, в котором указываем следующие свойства:
+Создаём файл - **ext.conf**, в котором указываем следующие свойства:
+
 [ req ]
-default_bits			= 3072						- длина шифрования по умолчанию (в бит.).
+
+default_bits			= 3072						- длина шифрования по умолчанию (в бит.)
+
 default_keyfile			= prot_one.key					- название приватного ключа по умолчанию
+
 distinguished_name		= req_distinguished_name			- название интерактивного файла, отвечающего за запись общих данных о создателе сертификата
+
 attributes			= req_attributes				- название интеркативного файла, отвечающего за правило записи паролей
+
 x509_extensions			= v3_ca						- название файла, отвечающего за использование расширений
+
 string_mask			= utf8only					- использование кодировки
 
+
 [ req_distinguished_name ]
+
 countryName			= Country Name (2 letter code)			- название страны (запрос)
+
 countryName_default		= RU						- название страны по умолчанию
+
 countryName_min			= 2						- минимальное кол-во символов
+
 countryName_max			= 2						- максимальное кол-во символов
 
+
 stateOrProvinceName		= Some state or province			- название области (запрос)
+
 stateOrProvinceName_default	= Moscow					- название области по умолчанию
 
+
 localityName			= Locality Name (eg, city)			- название города (запрос)
+
 localityName_default		= Moscow					- название города по умолчанию
 
+
 organizationName		= Organization Name (eg, org)			- название организации (запрос)
+
 organizationName_default	= WorldSkills					- название организации по умолчанию
 
+
 organizationalUnitName		= Organizational Unit Name (eg, section)	- название отдела организации (запрос)
+
 organizationalUnitName_default	= IT						- название отдела организации по умолчанию
 
+
 commonName			= Common Name (eg, YOUR name)			- основное DNS-имя или IP-адрес - важно для серверного сертификата, любое имя
+
 commonName_default		= CA						- имя по умолчанию
+
 commonName_max			= 64						- максимальная длина имени
 
+
 emailAddress			= Email Address					- имя электронной почты (запрос)
+
 emailAddress_default		= ca-support@demo.lab				- имя электронной почты по умолчанию
+
 emailAddress_max		= 40						- максисальная длина имени электронной почты
 
+
 [ req_attributes ]
+
 challengePassword		= A challenge Password				- ввод пароля (запрос)
+
 challengePassword_min		= 4						- минимальная длина пароля
+
 challengePassword_max		= 20						- максимальная длина пароля
+
 
 unstructuredName		= An optionaly company name			- использование имени компании опционально (запрос)
 
+
 [ v3_ca ]
+
 authorityKeyIdentifier		= keyid,issuer					- указываем использование данных о расширении ключа для его идентификации
+
 
 basicConstraints		= (critical) CA:TRUE or FALSE, pathlen:1	- указываем наличие использования центра сертификации и длины путя, длину путя можно не указывать, в случае, если расширение критическое, указываем в начале - critical
 
+
 keyUsage			= digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyCertSign		- указываем основные права сертификата
 
+
 subjectKeyIdentifier		= hash						- указываем идентификатор ключа субъекта 
+
 subjectAltName			= @alt_names					- указываем альтернативные DNS-имена для использования сертификатом.
 
+
 [ alt_names ]
+
 DNS.1				= CA						- само DNS-имя
 
-Сохраняем файл конфигурации
--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-2. Создаём файл - **client.ext**, который будет содержать расширения для промежуточного сертификата, в файле будут следующие свойства:
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Сохраняем файл конфигурации
+
+Создаём файл - **client.ext**, который будет содержать расширения для промежуточного сертификата, в файле будут следующие свойства:
+
 authorityKeyIdentifier		= keyid,issuer
 basicConstraints		= CA:TRUE,pathlen:2
 keyUsage			= digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyCertSign
@@ -206,7 +245,7 @@ DNS.2				= Intermediate.demo.lab
 Заполняем его, указывая только расширения
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-3. Создаём файл - **server.ext**. который будет содержать расширения для серверного сертификата, в файле будут следующие свойства:
+Создаём файл - **server.ext**. который будет содержать расширения для серверного сертификата, в файле будут следующие свойства:
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 authorityInfoAccess		= OCSP;URI:http://ocsp.my.host/
 authorityKeyIdentifier		= keyid,issuer
