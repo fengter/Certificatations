@@ -246,7 +246,6 @@ Cертификат - это не только открытый ключ, это
 **subjectAltName			= @alt_names**
 
 **[ alt_names ]**
-------------------
 
 **DNS.1				= Intermediate**
 **DNS.2				= Intermediate.demo.lab**
