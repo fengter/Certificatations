@@ -231,7 +231,9 @@ Cертификат - это не только открытый ключ, это
 Создаём файл - **client.ext**, который будет содержать расширения для промежуточного сертификата, в файле будут следующие свойства:
 
 **authorityKeyIdentifier		= keyid,issuer**
+
 **basicConstraints		= CA:TRUE,pathlen:2**
+
 **keyUsage			= digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyCertSign**
 
 **subjectKeyIdentifier		= hash**
