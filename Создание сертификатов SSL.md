@@ -229,7 +229,7 @@
 
 **DNS.1				= CA**						- DNS1
 
-**DNS.2    = CA.demo.lab - DNS2
+**DNS.2    = CA.demo.lab** - DNS2
 
 Сохраняем файл конфигурации
 
