@@ -256,9 +256,13 @@ Cертификат - это не только открытый ключ, это
 Создаём файл - **server.ext**. который будет содержать расширения для серверного сертификата, в файле будут следующие свойства:
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 **authorityInfoAccess		= OCSP;URI:http://ocsp.my.host/**
+
 **authorityKeyIdentifier		= keyid,issuer**
+
 **basicConstraints		= critical, CA:FALSE**
+
 **keyUsage			= digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment**
+
 **subjectKeyIdentifier		= hash**
 
 **subjectAltName			= @alt_names**
