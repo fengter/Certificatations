@@ -360,8 +360,25 @@ openssl x509 -req -in serverReq.csr -CA clientCert.crt -CAkey clientKey.key -CAc
 
 - **-extfile** - используем данные с файла, в котором будут храниться расширения для запросов.
 
-## 6. После генерации всех сертификатов, - **clientCert.crt и rootCACert.crt** переносим на другую машину,
+## 6. После генерации всех сертификатов, - **clientCert.crt и rootCACert.crt**, переносим их на другую машину,
 
+``
+В нашем случае, мы перенесли сертификаты на машину с ОС Windows, далее, будем работать с ней
+``
+
+### Следующим этапом, открываем окно "Выполнить"
+``
+Win + R
+``
+
+### После чего вводим туда
+``
+certmgr.mscr
+``
+
+### Где открывается окно менеджера управления сертификатами
+
+[<img src="https://github.com/fengter/Certifications/blob/main/photo1.png">](https://github.com/fengter/Certifications/blob/main/photo1.png)
 
 
 ## 7. В нашем случае, используется сервер **Nginx**, поэтому заходим в файл iwtm.conf, расположенный в /etc/nginx/conf.d/ после чего находим 2 слова: **ssl_certificate** и **ssl_certificate_key**, присваиваем им значения серверного сертификата и его ключа (указываем полный путь до этих файлов с их названием).
