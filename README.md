@@ -346,6 +346,7 @@ openssl req -new -newkey rsa:2048 -sha256 -nodes -key serverKey.key -out serverR
 ``
 openssl x509 -req -in clientReq.csr -CA rootCACert.crt -CAkey rootCAKey.key -CAcreateserial -out clientCert.crt -days 365 -sha256 -extfile client.ext
 ``
+
 ``
 openssl x509 -req -in serverReq.csr -CA clientCert.crt -CAkey clientKey.key -CAcreateserial -out serverCert.crt -days 365 -sha256 -extfile server.ext
 ``
