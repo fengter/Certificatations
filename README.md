@@ -435,9 +435,11 @@ service nginx restart
 [<img src="https://github.com/fengter/Certifications/blob/main/photo3.png">](https://github.com/fengter/Certifications/blob/main/photo3.png)
 #### **После этого, следуем инструкциям и всё, при вводе псевдонима в https-запрос будет совершён успешный переход на веб-сайт уже по новому псевдониму.**
 
-### Список используемых источников:
+### Список используемых источников
 
+``
 Очень благодарен авторам следующих постов:
+``
 
 1. Основы HTTPS, TLS, SSL. Создание собственных X.509 сертификатов. Пример настройки TLSv1.2 в Spring Boot - https://habr.com/ru/post/593507/
 2. Как выпустить самоподписанный SSL сертификат и заставить ваш браузер доверять ему - https://habr.com/ru/post/352722/
