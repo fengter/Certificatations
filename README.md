@@ -435,7 +435,7 @@ service nginx restart
 [<img src="https://github.com/fengter/Certifications/blob/main/photo3.png">](https://github.com/fengter/Certifications/blob/main/photo3.png)
 #### **После этого, следуем инструкциям и всё, при вводе псевдонима в https-запрос будет совершён успешный переход на веб-сайт уже по новому псевдониму.**
 
-### Список используемых источников
+## Список используемых источников
 
 ``
 Очень благодарен авторам следующих постов:
