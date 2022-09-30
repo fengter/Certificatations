@@ -190,7 +190,7 @@ touch ext.conf
 КОМАНДА | ОПИСАНИЕ
 ------------- | ---------------
 **authorityKeyIdentifier		= keyid,issuer** | указываем использование данных о расширении ключа для его идентификации
-**basicConstraints		= CA:FALSE** | указываем, что является ли этот сертификат - сертификатом CA (True) или это сертификат для конечного объекта (False). Также параметр может быть критическим (critical, CA:TRUE). Также может быть необязательный атрибут, определяющий максимальную глубину цепочки сертификатов - pathLen (CA:TRUE, pathLen:INTEGER).
+**basicConstraints		= CA:TRUE** | указываем, что является ли этот сертификат - сертификатом CA (True) или это сертификат для конечного объекта (False). Также параметр может быть критическим (critical, CA:TRUE). Также может быть необязательный атрибут, определяющий максимальную глубину цепочки сертификатов - pathLen (CA:TRUE, pathLen:INTEGER).
 **keyUsage			= digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyCertSign** | указываем основные права сертификата
 **subjectKeyIdentifier		= hash** | указываем идентификатор ключа субъекта 
 **subjectAltName			= @alt_names** | указываем альтернативные DNS-имена для использования сертификатом.
