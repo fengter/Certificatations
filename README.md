@@ -424,10 +424,10 @@ service nginx restart
 ### 10. Наконец, заходим с машины, на которую мы установили сертификаты и в браузере переходим по ранее указаному нами DNS-имени. 
 
 
-### 11. В заключение, созданные нами сертификаты можно упаковать в файл - pkcs12
+### 11. В заключение, созданные нами сертификаты можно упаковать в файл формата - pkcs12
 
 ``
-openssl pkcs12 -export -in clientCert.crt -inkey clientKey.key -certfile rootCACert.crt -out out.p12
+openssl pkcs12 -export -in clientCert.crt -inkey clientKey.key -certfile rootCACert.crt -out result.p12
 ``
 
 -------------------------------------------------------------------------------------------
