@@ -120,4 +120,5 @@ then
 	echo -e "\nУкажите имя упаковочного пакета (e.g. name.p12): "
 	read namep
 	openssl pkcs12 -export -in crts/$nameCT2 -inkey keys/$nameK2 -certfile crts/$nameCT1 -out $namep
+	echo -e "\nУпаковка сертификатов была успешно завершена"
 fi
