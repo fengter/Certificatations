@@ -6,15 +6,26 @@ mark="y"
 while [ $mark = "y" ]
 do
 
-	echo -n "Что Вы хотите сделать? (Начать с нуля (a); продолжить с создания второго конфиг. файла (b); продолжить с создания третьего конфиг. файла (c); начать генерацию сертификатов (d)) (a / b / c / d): "
+	sleep 1
+	echo -ne "\n\n\033[1mВыберите этап создания конфиг. файлов:\n---------------------------------------------------------------------------\n(a):\033[0m Начать с нуля;\n\n\033[1m(b):\033[0m Создание конфиг. файла для серверного сертификата;\n\n\033[1m(c):\033[0m Создание конфиг. файла для промежуточного сертификата;\n\n\033[1m(d):\033[0m Начать генерацию сертификатов.\033[1m\n---------------------------------------------------------------------------\n\n\nВаш ответ:  \033[0m"
 	read answ
 	
 	if [ $answ = "a" ]
 	then
-		
-		rm -rf /certs/
-		mkdir -p /certs/csrs/ /certs/crts/ /certs/keys/ /certs/extensions/
-		
+		if [ -d /certs/ ]
+		then	
+			echo -en "\nХотите удалить директорию '/certs/'? \033[1m(y/n):\033[0m "
+			read answ
+			if [ $answ = "y" ]
+			then
+				rm -rf /certs/
+			else
+				cd /certs/
+			fi
+		else
+			mkdir -p /certs/csrs/ /certs/crts/ /certs/keys/ /certs/extensions/	
+		fi
+			
 		touch /certs/extensions/ext.conf
 		cd /certs/extensions/
 		
@@ -28,7 +39,7 @@ do
 		echo -e '\nauthorityKeyIdentifier = keyid,issuer\nbasicConstraints = CA:TRUE\nkeyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyCertSign\nsubjectKeyIdentifier = hash\nsubjectAltName = @alt_names' >> ext.conf
 		echo -e '\n[ alt_names ]' >> ext.conf
 		
-		
+		sleep 1
 		echo -ne "\nВведите одним числом общее количество доменов для корневого сертификата: "
 		read count
 		num=0
@@ -38,11 +49,12 @@ do
 		do
 			num=$[$num + 1]
 			
-			echo -ne "Введите DNS.$num: "
+			sleep 1
+			echo -ne "Введите \033[1mDNS.$num:\033[0m "
 			read dns
 			
 			echo -e "DNS.$num = $dns" >> ext.conf
-			echo -e "DNS.$num = $dns\n"
+			echo -e "\033[1mDNS.$num\033[0m = $dns\n"
 			
 			count=$[$count - 1]
 		done
@@ -52,7 +64,9 @@ do
 	
 	if [ $answ = "b" ]
 	then
+		sleep 1
 		echo -e "ПРЕДУПРЕЖДЕНИЕ: Если Вы создали неправильно предыдущий конфиг. файл, в дальнейшем будут ошибки!!!\n"
+		sleep 1
 		cd /certs/extensions/
 		rm -rf server.ext
 		
@@ -63,20 +77,29 @@ do
 		echo -e '\n[ alt_names ]' >> server.ext
 		
 		echo -ne "Введите одним числом общее количество доменов для серверного сертификата: "
-		
 		read count
 		num=0
-		echo -e ' '
 		
+		sleep 1
+		count2=3
+		echo " "
+
+		while [ $count2 -gt 0 ]
+		do
+			echo -e "\033[1mПРЕДУПРЕЖДЕНИЕ:\033[0m Важно указать существующее DNS-имя\033[1m($count2)\033[0m\n"
+			count2=$(($count2-1))
+			sleep 1
+		done
+
 		while [ $count -gt 0 ]
 		do
 			num=$[$num + 1]
-			
-			echo -ne "Введите DNS.$num: "
+
+			echo -ne "Введите \033[1mDNS.$num:\033[0m "
 			read dns
 			
 			echo -e "DNS.$num = $dns" >> server.ext
-			echo -e "DNS.$num = $dns\n"
+			echo -e "\033[1mDNS.$num\033[0m = $dns\n"
 			
 			count=$[$count - 1]
 		done
@@ -86,7 +109,9 @@ do
 	
 	if [ $answ = "c" ]
 	then
+		sleep 1
 		echo -e "ПРЕДУПРЕЖДЕНИЕ: Если Вы создали неправильно предыдущие конфиг. файлы, в дальнейшем будут ошибки!!!\n"
+		sleep 1
 		cd /certs/extensions/
 		rm -rf client.ext
 		
@@ -107,11 +132,12 @@ do
 		do
 			num=$[$num + 1]
 			
-			echo -ne "Введите DNS.$num: "
+			sleep 1
+			echo -ne "Введите \033[1mDNS.$num:\033[0m "
 			read dns
 			
 			echo -e "DNS.$num = $dns" >> client.ext
-			echo -e "DNS.$num = $dns\n"
+			echo -e "\033[1mDNS.$num\033[0m = $dns\n"
 			
 			count=$[$count - 1]
 		done
@@ -121,13 +147,17 @@ do
 	
 	if [ $answ = "d" ]
 	then
+		sleep 1
 		echo -e "ПРЕДУПРЕЖДЕНИЕ: Если Вы создали неправильно предыдущие конфиг. файлы, в дальнейшем будут ошибки!!!\n"
+		sleep 1
 		cd /certs/extensions/
 	else
-		echo -ne "Ошибка выполнения, начните сначала."
+		sleep 1
+		echo -ne "\nОшибка выполнения, начните сначала.\n"
+		sleep 1
 	fi
-
-	echo -ne "\nХотите вернуться в начало? (y/n): "
+	
+	echo -ne "\nХотите вернуться в начало? \033[1m(y/n):\033[0m "
 	read mark		
 	
 	if [ $mark = "n" ]
