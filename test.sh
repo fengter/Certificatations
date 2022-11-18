@@ -12,20 +12,21 @@ do
 	
 	if [ $answ = "a" ]
 	then
-		if [ -d /certs/ ]
-		then	
-			echo -en "\nХотите удалить директорию '/certs/'? \033[1m(y/n):\033[0m "
-			read answ
-			if [ $answ = "y" ]
-			then
-				rm -rf /certs/
-			else
-				cd /certs/
-			fi
-		else
-			mkdir -p /certs/csrs/ /certs/crts/ /certs/keys/ /certs/extensions/	
-		fi
-			
+#		if [ -d /certs/ ]
+#		then	
+#			echo -en "\nХотите удалить директорию '/certs/'? \033[1m(y/n):\033[0m "
+#			read answ
+#			if [ $answ = "y" ]
+#			then
+#				rm -rf /certs/
+#			else
+#				cd /certs/
+#			fi
+#		else
+#			mkdir -p /certs/csrs/ /certs/crts/ /certs/keys/ /certs/extensions/	
+#		fi
+		
+		mkdir -p /certs/csrs/ /certs/crts/ /certs/keys/ /certs/extensions/
 		touch /certs/extensions/ext.conf
 		cd /certs/extensions/
 		
