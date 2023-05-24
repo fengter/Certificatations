@@ -110,7 +110,7 @@ touch instruct.txt
 
 echo -e "Откройте файл: /etc/nginx/conf.d/iwtm.conf\nЗатем найдите 2 ключа - ssl_certificate и ssl_certificate_key\nВведите на место значения указанные ниже данные!" >> instruct.txt
 
-echo -e "\n/certs/crts/$nameCT1\n/certs/keys/$nameK1" >> instruct.txt
+echo -e "\n/certs/crts/$nameCT3\n/certs/keys/$nameK3" >> instruct.txt
 
 echo -en "Хотите упаковать сертификаты в формат - pkcs12? (y/n): "
 read answ
